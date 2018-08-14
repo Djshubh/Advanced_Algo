@@ -47,21 +47,21 @@ void insertNode(bionode *H,int newkey){
 
 void uniteHeap(bionode *x){
   bionode *prev,*next;
-  //  cout<<"::1";
+ 
   while(x->rsib!=NULL){
      prev = x;
      x= x->rsib;
-   //  cout<<"::101";
+   
     if(x->rsib!=NULL){
 
        next = x->rsib;
-    //     cout<<"::2";
+   
         if(x->deg==next->deg && (next->rsib==NULL ||next->rsib->deg!= x->deg))
        {
-      //     cout<<"::3";
+   
            if(x->key<=next->key)      //case 3
            {
-        //      cout<<"::301";
+       
                x->rsib = next->rsib;
                next->parent= x;
                x->deg +=1;
@@ -72,7 +72,6 @@ void uniteHeap(bionode *x){
            else
            if(x->key>=next->key)
            {
-          //     cout<<"::302";
                 prev->rsib= next;
                 x->parent = next;
                 next->deg +=1;
@@ -143,32 +142,27 @@ bionode *unionHeap(bionode *p,bionode *q){
      y = x;
      p = p->rsib;
      q = q->rsib;
-     //drawHeap(q);
-
+    
      while(p!=NULL||q!=NULL){
         bionode *z;
         z = new bionode;
         if(p==NULL){
-              //  cout<<"PNULL ";
             z = q;
             x->rsib = z;
             q = q->rsib;
         }else
         if(q==NULL){
-             //   cout<<"QNULL ";
             z= p;
             x->rsib = z;
             p = p->rsib;
         }
         else{
           if(q->deg<=p->deg){
-             //  cout<<"Q ";
             z = q;
             x->rsib = z;
             q = q->rsib;
           }else
           if(q->deg>p->deg){
-             //  cout<<"P ";
             z = p;
             x->rsib = z;
             p = p->rsib;
@@ -176,12 +170,10 @@ bionode *unionHeap(bionode *p,bionode *q){
         }
 
         x = x->rsib;
-        // cout<<x->key<<" ";
     }
-    //rooTraversal(y);
-
+   
     uniteHeap(y);
-    //drawHeap(y);
+ 
     cout<<"\n";
     return y;
 }
@@ -287,23 +279,22 @@ int main(){
     cout<<"\nProcessing...heap1....\n";
      for(int i =0;i<n1;i++){
         insertNode(head1,binkey1[i]);
-        cout<<"INSERTED KEY : "<<head1->rsib->key<<"\n";
+       // cout<<"INSERTED KEY : "<<head1->rsib->key<<"\n";
         uniteHeap(head1);
-        drawHeap(head1);
+       // drawHeap(head1);
         cout<<" ..";
-        cout<<"heap size :\n"<<i+1<< "\n Press any key to continue...\n";
+        //cout<<"heap size :\n"<<i+1<< "\n Press any key to continue...\n";
         getch();
 
-           // heapTraversal(head);
-     }
+        }
      cout<<"\nProcessing...heap2....\n";
      for(int i =0;i<n2;i++){
         insertNode(head2,binkey2[i]);
         cout<<head2->rsib->key;
         uniteHeap(head2);
         cout<<" ..";
-           // heapTraversal(head);
-     }
+ 
+      }
      cout <<"\nEnter the options :\n 1. print heap 1\n";
      cout <<"2. print heap 2\n";
      cout <<"3. find Minimum Value \n";
@@ -314,8 +305,7 @@ int main(){
 
      int choice,cnt=1;
       int x,k;
-      //x = 39 ; k = 10;
-
+   
      while(cnt>0){
         cin >> choice;
         switch(choice){
